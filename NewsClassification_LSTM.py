@@ -1,4 +1,4 @@
-# using deep learning_RNN
+# using deep learning_LSTM
 
 # get data
 from news import news_data
