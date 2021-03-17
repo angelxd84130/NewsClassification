@@ -35,7 +35,7 @@ def lemma_words(x):
     wnl = WordNetLemmatizer()
     Train_data = []
     for sentence in x:
-        Train_Sentence = ['']
+        Train_Sentence = ''
         sentence = addressSentence(sentence)
         # separate words
         tokens = word_tokenize(sentence)
@@ -43,7 +43,7 @@ def lemma_words(x):
         # print(tagged_sent)
         for tag in tagged_sent:
             wordnet_pos = get_wordnet_pos(tag[1]) or wordnet.NOUN
-            Train_Sentence[0] += wnl.lemmatize(tag[0], pos=wordnet_pos) + ' '
+            Train_Sentence += wnl.lemmatize(tag[0], pos=wordnet_pos) + ' '
         Train_data.append(Train_Sentence)
     return Train_data
 
