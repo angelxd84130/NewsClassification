@@ -6,7 +6,10 @@ TopNum = {}
 data = np.array([])
 Texts = []
 Labels = []
-page_size = 100
+page_size = 50
+
+def top_name():
+    return Alltop
 
 def getPlan(data, idx, Texts, Labels, TopNum):
     TopNum[Alltop[idx]] = 0
