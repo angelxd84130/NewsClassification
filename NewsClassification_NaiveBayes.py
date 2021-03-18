@@ -18,9 +18,18 @@ model.fit(trainX, trainY)
 predict_categories = model.predict(testX)
 acc = accuracy_score(testY, predict_categories)
 print("Final accuracy:", acc)
+
 # plot
-from matplotlib.pyplot import plot
-#mat = confusion_matrix(testY, predict_categories)
+import matplotlib.pyplot as plt
+import seaborn as sns
+mat = confusion_matrix(testY, predict_categories)
+from news import top_name
+sns.heatmap(mat, square=True, annot=True, fmt='d', xticklabels=top_name(), yticklabels=top_name())
+plt.title("Naive Bayes")
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.savefig('NaiveBayes.png')
+#plt.show()
 
 
 
