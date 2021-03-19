@@ -5,19 +5,19 @@ from NewsClassification import lemma_data
 (trainX, trainY), (testX, testY) = lemma_data()
 
 # Vectorization_count the total number of each word
-#from sklearn.feature_extraction.text import CountVectorizer
-#vectorizer = CountVectorizer()
-#X = vectorizer.fit_transform(trainX, trainY)
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import make_pipeline
 from sklearn.metrics import confusion_matrix, accuracy_score
 #print(X.toarray())
-model = make_pipeline(TfidfVectorizer(), MultinomialNB())
+model = make_pipeline(TfidfVectorizer(sublinear_tf=True, norm='l2', ngram_range=(1, 2), stop_words='english'), MultinomialNB())
 model.fit(trainX, trainY)
 predict_categories = model.predict(testX)
 acc = accuracy_score(testY, predict_categories)
 print("Final accuracy:", acc)
+
 
 # plot
 import matplotlib.pyplot as plt
