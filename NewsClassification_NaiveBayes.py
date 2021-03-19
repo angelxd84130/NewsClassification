@@ -23,6 +23,7 @@ print("Final accuracy:", acc)
 import matplotlib.pyplot as plt
 import seaborn as sns
 mat = confusion_matrix(testY, predict_categories)
+fig, ax = plt.subplots(figsize=(10,10))
 from news import top_name
 sns.heatmap(mat, square=True, annot=True, fmt='d', xticklabels=top_name(), yticklabels=top_name())
 plt.title("Naive Bayes")
