@@ -13,8 +13,9 @@ def top_name():
 def getPlan(data, idx, Texts, Labels, TopNum):
     TopNum[Alltop[idx]] = 0
     timeNow = datetime.now().strftime("%Y-%m-%d")
+
     for j in range(len(data)):
-        if data[j]['content'] is not None and data[j]['publishedAt']==timeNow:
+        if data[j]['content'] is not None and data[j]['publishedAt'][:10]==timeNow:
             # clean data (get content only)
             Texts.append(data[j]['content'])
             # set up labels (categories)
@@ -40,12 +41,15 @@ def load():
 def task():
     print("Loading..", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
+
 # auto loading 7 days
-for i in range(7):
+sec = 24*60*60
+days = [0]+[sec]*6
+for i in days:
     # initialize time
     scheduler = sched.scheduler(time.time, time.sleep)
     # schedule the time to call load function
-    scheduler.enter(24*60*60, 1, load)
+    scheduler.enter(i, 1, load)
     scheduler.run()
 
 
