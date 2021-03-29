@@ -1,13 +1,3 @@
-<!--
-**Classify articles in 6 categories: science, general, health, business, entertainment, sports.**  
-**Use nltk library to organize and lemmatize words**  
-
- 
-### Problems & Solutions  
-- Underfit: Download and save articles regularly to increase training volume(The API has a download limit of < 100 articles per category).
-- Noice: Filte stop words to highlight keywords.
-- Optimization: set up ngram function to consider both unigrams and bigrams at the same time.
- -->
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -65,16 +55,21 @@
 ## About The Project
 
 
-Want to make a system that can continuously obtain real-world data and apply machine learning to classify after processing. It is hoped that by continuously and automatically obtaining and training new data, the accuracy of classification can be improved.
+Want to make a system that can continuously obtain real-world data and apply machine learning to classify after processing. It is hoped that by continuously and automatically obtaining and training new data, the accuracy of classification can be improved.   
+In this project, articles are collected from newsAPI and are in 6 categories: science, general, health, business, entertainment, sports.
 
 Here's why:
 * Real-world data is very complicated and needs to be handled carefully
 * Only by accumulating the amount of data can the accuracy of the training model be improved
 * The training results can be used in the automatic filing and search system of articles
 
-At present, several supervised learning models are used on the data, and the results are generated to compare the accuracy.
+At present, several supervised learning models are used on the data, and the results are generated to compare the accuracy.  
+For supervised learning models: Naive Bayes, Linear Regression, SVM, and RandomForest,  
+it uses nltk library to process and lemmatize words and applies scikit-learn to filter stop words before traning models.  
+Also, in Naive Bayes model, it considers both unigrams and bigrams at the same time.  
 
-The system for automatically storing articles is being processed to increase the amount of data for training and testing.
+The system for automatically storing articles is being processed to increase the amount of data for training and testing.  
+(The API has a download limit of < 100 articles per category)
 
 ### Built With
 
@@ -110,7 +105,9 @@ Download code and repalce the api_key to your own.
 ## Usage
 
 Use the plot to check result.  
-[![NaiveBayes][product-screenshot]]  
+### confused matrix 
+![NaiveBayes][product-screenshot] 
+### accuracy
 - Naive Bayes: 0.55
 - CNN: 0.33
 - RNN: 0.28
