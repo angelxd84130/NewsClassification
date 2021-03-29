@@ -1,15 +1,11 @@
 from newsapi import NewsApiClient
-newsapi = NewsApiClient(api_key='9cd9ca0dc6ec44388be32fb87220cb75')
-Alltop = ["science", "general", "health", "business", "entertainment", "sports"]
-TopNum = {}
-
 from datetime import datetime
 import time
 import sched
 import json
-
-def top_name():
-    return Alltop
+newsapi = NewsApiClient(api_key='9cd9ca0dc6ec44388be32fb87220cb75')
+Alltop = ["science", "general", "health", "business", "entertainment", "sports"]
+TopNum = {}
 
 def clean(data, idx, Texts, TopNum):
     TopNum[Alltop[idx]] = 0
