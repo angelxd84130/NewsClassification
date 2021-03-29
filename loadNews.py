@@ -16,11 +16,13 @@ def clean(data, idx, Texts, TopNum):
     timeNow = datetime.now().strftime("%Y-%m-%d")
 
     for j in range(len(data)):
-        # clean data
+        # clean data and store it in dictionary format
+        mydict = {}
         if data[j]['content'] is not None and data[j]['publishedAt'][:10]==timeNow:
             # set up labels (categories)
-            data[j]['label'] = idx
-            Texts.append(data[j])
+            mydict['label'] = idx
+            mydict['content'] = data[j]['content']
+            Texts.append(mydict)
             TopNum[Alltop[idx]] += 1
 
 def load():
@@ -38,7 +40,13 @@ def load():
     # check how many data we have
     print("Articles:", TopNum)
 
-    # store data in the file
+    # store data in the json file
+    # read data
+    dataFile = json.load(open("data.json", "r"))
+    # append data
+    dataFile += Texts
+    # write data
+    json.dump(dataFile, open("data.json", "w"))
 
     print("Finish loading -> machine learning is available now.")
 
