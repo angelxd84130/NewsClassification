@@ -21,13 +21,13 @@ models = [
     make_pipeline(tfidf_vect, RandomForestClassifier(n_estimators=200, max_depth=3, random_state=0)),
     make_pipeline(tfidf_vect, LinearSVC()),
     make_pipeline(tfidf_vect, LogisticRegression(random_state=0))]
-
+'''
 for model in models:
     model.fit(trainX, trainY)
 predict_categories = model.predict(testX)
 acc = accuracy_score(testY, predict_categories)
 print("Final accuracy:", acc)
-
+'''
 
 # plot
 import matplotlib.pyplot as plt
