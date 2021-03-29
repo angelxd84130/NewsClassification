@@ -30,8 +30,7 @@ def load():
     print("Get news articles from newsapi.NewsApiClient in 6 categories")
     Texts = []
     page_size = 50
-    with open('abc.json', 'r', encoding='utf-8') as f:
-        output = json.load(f)
+
     for i in range(len(Alltop)):
         # get all data from newsAPI
         data = newsapi.get_top_headlines(category=Alltop[i], language='en', country="us", page_size=page_size).get('articles')
