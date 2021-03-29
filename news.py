@@ -30,8 +30,9 @@ def news_data():
 
     # check how many data we have
     print("Articles:", TopNum)
-
+    #print(data)
     # make training data and testing data
     from sklearn.model_selection import train_test_split
     trainX, testX, trainY, testY = train_test_split(Texts, Labels, test_size=0.25, random_state=1000)
     return (trainX, trainY), (testX, testY)
+#news_data()

@@ -6,37 +6,41 @@ TopNum = {}
 from datetime import datetime
 import time
 import sched
+import json
 
 def top_name():
     return Alltop
 
-def getPlan(data, idx, Texts, Labels, TopNum):
+def clean(data, idx, Texts, TopNum):
     TopNum[Alltop[idx]] = 0
     timeNow = datetime.now().strftime("%Y-%m-%d")
 
     for j in range(len(data)):
+        # clean data
         if data[j]['content'] is not None and data[j]['publishedAt'][:10]==timeNow:
-            # clean data (get content only)
-            Texts.append(data[j]['content'])
             # set up labels (categories)
-            Labels.append(idx)
+            data[j]['label'] = idx
+            Texts.append(data[j])
             TopNum[Alltop[idx]] += 1
 
 def load():
     task()
     print("Get news articles from newsapi.NewsApiClient in 6 categories")
     Texts = []
-    Labels = []
     page_size = 50
+    with open('abc.json', 'r', encoding='utf-8') as f:
+        output = json.load(f)
     for i in range(len(Alltop)):
         # get all data from newsAPI
         data = newsapi.get_top_headlines(category=Alltop[i], language='en', country="us", page_size=page_size).get('articles')
-        getPlan(data, i, Texts, Labels, TopNum)
+        clean(data, i, Texts, TopNum)
 
     # check how many data we have
     print("Articles:", TopNum)
 
     # store data in the file
+
+    print("Finish loading -> machine learning is available now.")
 
 def task():
     print("Loading..", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
