@@ -68,8 +68,10 @@ For supervised learning models: Naive Bayes, Linear Regression, SVM, and RandomF
 it uses nltk library to process and lemmatize words and applies scikit-learn to filter stop words before traning models.  
 Also, in Naive Bayes model, it considers both unigrams and bigrams at the same time.  
 
-The system for automatically storing articles is being processed to increase the amount of data for training and testing.  
-(The API has a download limit of < 100 articles per category)
+The system for automatically storing articles is working right now to increase the amount of data for training and testing.  
+(The API has a download limit of < 100 articles per category)  
+It loads daily news articles and them store them in a json file in order to do the next step: Useing Apache Spark to speed up our actions on data.  
+
 
 ### Built With
 
