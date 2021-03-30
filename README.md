@@ -70,7 +70,7 @@ Also, in Naive Bayes model, it considers both unigrams and bigrams at the same t
 
 The system for automatically storing articles is working right now to increase the amount of data for training and testing.  
 (The API has a download limit of < 100 articles per category)  
-It loads daily news articles and them store them in a json file in order to do the next step: Useing Apache Spark to speed up our actions on data.  
+It loads daily news articles and then stores them in a JSON file in order to do use Apache Spark to speed up our actions on the data next.   
 
 
 ### Built With
