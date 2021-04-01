@@ -16,7 +16,7 @@
   <p align="center">
     Automatic classification system
     <br />
-    <a href="https://github.com/angelxd84130/NewsClassification">View Demo</a>
+    <a href="https://github.com/angelxd84130/NewsClassification/blob/master/NewsClassification_Demo.pdf">View Demo</a>
     ·
     <a href="https://github.com/angelxd84130/NewsClassification/issues">Report Bug</a>
     ·
@@ -64,7 +64,7 @@ Here's why:
 * The training results can be used in the automatic filing and search system of articles
 
 At present, several supervised learning models are used on the data, and the results are generated to compare the accuracy.  
-For supervised learning models: Naive Bayes, Linear Regression, SVM, and RandomForest,  
+For supervised learning models: Naive Bayes, Linear Regression, and SVM,  
 it uses nltk library to process and lemmatize words and applies scikit-learn to filter stop words before traning models.  
 Also, in Naive Bayes model, it considers both unigrams and bigrams at the same time.  
 
