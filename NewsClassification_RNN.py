@@ -29,7 +29,7 @@ from keras.layers.recurrent import SimpleRNN
 model = Sequential()
 # Embedding layer
 # input 200+ training examples, and each length is 200
-model.add(Embedding(output_dim=32, input_dim=4000, input_length=200))
+model.add(Embedding(output_dim=32, input_dim=6000, input_length=200))
 model.add(Dropout(0.25))
 # RNN layer
 model.add(SimpleRNN(units=32))
