@@ -21,7 +21,7 @@ from keras.preprocessing import sequence
 x_train = sequence.pad_sequences(x_train, maxlen=200)
 x_test = sequence.pad_sequences(x_test, maxlen=200)
 
-# set up training model RNN
+# set up training model CNN
 from keras import Sequential
 from keras.layers.core import Dense, Dropout
 from keras.layers import Embedding, Flatten
@@ -29,7 +29,7 @@ from keras.layers.recurrent import LSTM
 model = Sequential()
 # Embedding layer
 # input 200+ training examples, and each length is 200
-model.add(Embedding(output_dim=32, input_dim=6000, input_length=200))
+model.add(Embedding(output_dim=32, input_dim=12000, input_length=200))
 model.add(Dropout(0.25))
 # RNN layer
 model.add(Flatten())
