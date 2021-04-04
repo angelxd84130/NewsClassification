@@ -22,6 +22,7 @@ print("Final accuracy:", acc)
 # plot
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 mat = confusion_matrix(testY, predict_categories)
 fig, ax = plt.subplots(figsize=(10,10))
 from news import top_name
