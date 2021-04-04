@@ -26,7 +26,7 @@ Day7 = [61, 226, 133, 294, 270, 341]
 
 width = 0.35
 fig, ax = plt.subplots()
-
+ax.bar(Alltop, Day7, width, label='Day7')
 ax.bar(Alltop, Day6, width, label='Day6')
 ax.bar(Alltop, Day5, width, label='Day5')
 ax.bar(Alltop, Day4, width, label='Day4')
