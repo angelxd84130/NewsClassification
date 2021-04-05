@@ -18,7 +18,7 @@ def news_data():
     print("Get news articles from newsapi.NewsApiClient in 6 categories")
 
     # get all data from json file
-    df = pd.read_json("data_day1.json")
+    df = pd.read_json("data.json")
     countData(df)
 
     # make training data and testing data
