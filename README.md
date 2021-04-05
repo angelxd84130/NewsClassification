@@ -33,6 +33,10 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#data-mining">Data Mining</a></li>
+        <li><a href="#data-preprocessing">Data Preprocessing</a></li>
+        <li><a href="#data-modeling">Data Modeling</a></li>
+        <li><a href="#evaluation">Evaluation</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -65,7 +69,7 @@ Here's why:
 * The training results can be used in the automatic filing and search system of articles
 
 ### Data Mining  
-The system collected articles through newsAPI, which are in 6 categories: science, general, health, business, entertainment, sports, and then stored them in a JSON file.
+The system collects articles through newsAPI, which are in 6 categories: science, general, health, business, entertainment, sports, and then stored them in a JSON file.
 Due to the limit of loading in that API, the amount of data that can be downloaded for each subject cannot exceed 100 at a time. 
 Therefore, by running the system for 7 days to download daily data to increase the amount of data.  
 
@@ -76,20 +80,22 @@ Next, after filter stop words, calculate the flat rate of each word, and record 
  
 
 ### Data Modeling  
-In this project, 3 supervised learning models are considered: Naive Bayes, SVM, and Linear Regression.
+In this project, 3 supervised learning models are applied: Naive Bayes, SVM, and Logistic Regression.
 Also, in Naive Bayes model, it considers both unigrams and bigrams at the same time. 
 
 ### Data Training & Testing  
 Randomly obtain 80% of the training data and 20% of the test data from the JSON file where the data is stored.  
-The system trained and predicted the data every day to observe the correlation between the amount of data and the accuracy of the prediction.  
+The system trains and predicts the data every day to observe the correlation between the amount of data and the accuracy of the prediction.  
 
 ### Evaluation
-
+Through the 7-day experiment, about 1300 articles can be obtained, and the distribution of 6 categories can be seen from the plot below.   
+According to the results, the SVM model performs best when the amount of data is small, and its accuracy is 0.60.   
+Followed by logistic regression, whcih is 0.55, and finally is Naive Bayes, which is 0.53.   
+It can be found from the confusion matrix that among the six categories, sports articles have the highest recognizability, and its accuracy is as high as 96.6%.  
+Followed by business and entertainment news, their discrimination is as high as 68.6% and 62.7%.   
+The remaining three categories are due to insufficient data, it is difficult to distinguish the content of the article leading to a decrease in overall accuracy.
 
   
-
- 
-
 
 ### Built With
 
@@ -97,7 +103,6 @@ The system trained and predicted the data every day to observe the correlation b
 * [scikit-learn](https://scikit-learn.org/stable/#)
 * [matplotlib](https://matplotlib.org/)
 * [nltk](https://www.nltk.org/)
-* [keras](https://keras.io/)
 
 
 
@@ -131,9 +136,9 @@ Articles: {'science': 61, 'general': 226, 'health': 133, 'business': 294, 'enter
 ![Data][product-screenshot1]  
  
 ### Accuracy
-- Naive Bayes: 0.55
-- SVM: 0.64
-- Linear Regression: 0.61  
+- Naive Bayes: 0.539156
+- SVM: 0.608433
+- Logistic Regression: 0.551204  
 ![SupervisedLearning][product-screenshot2]  
 
 ### confused matrix 
