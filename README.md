@@ -33,6 +33,10 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#data-mining">Data Mining</a></li>
+        <li><a href="#data-preprocessing">Data Preprocessing</a></li>
+        <li><a href="#data-modeling">Data Modeling</a></li>
+        <li><a href="#evaluation">Evaluation</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -55,23 +59,43 @@
 ## About The Project
 
 
-Want to make a system that can continuously obtain real-world data and apply machine learning to classify after processing. It is hoped that by continuously and automatically obtaining and training new data, the accuracy of classification can be improved.   
-In this project, articles are collected from newsAPI and are in 6 categories: science, general, health, business, entertainment, sports.
+The goal is making a system that can continuously obtain real-world data and apply machine learning to classify after processing. It is hoped that by continuously and automatically obtaining and training new data, the accuracy of classification can be improved.   
+In this project, the following steps were implemented: Data Mining, Data Preprocessing, Data Modeling, Data Training & Testing, and Evaluation.  
+
 
 Here's why:
 * Real-world data is very complicated and needs to be handled carefully
 * Only by accumulating the amount of data can the accuracy of the training model be improved
 * The training results can be used in the automatic filing and search system of articles
 
-At present, several supervised learning models are used on the data, and the results are generated to compare the accuracy.  
-For supervised learning models: Naive Bayes, Linear Regression, and SVM,  
-it uses nltk library to process and lemmatize words and applies scikit-learn to filter stop words before traning models.  
-Also, in Naive Bayes model, it considers both unigrams and bigrams at the same time.  
+### Data Mining  
+The system collects articles through newsAPI, which are in 6 categories: science, general, health, business, entertainment, sports, and then stored them in a JSON file.
+Due to the limit of loading in that API, the amount of data that can be downloaded for each subject cannot exceed 100 at a time. 
+Therefore, by running the system for 7 days to download daily data to increase the amount of data.  
 
-The system for automatically storing articles is working right now to increase the amount of data for training and testing.  
-(The API has a download limit of < 100 articles per category)  
-It loads daily news articles and then stores them in a JSON file in order to do use Apache Spark to speed up our actions on the data next.   
+### Data Preprocessing  
+Considering that this project uses keywords to distinguish article categories, the system uses the nltk library for natural language processing and the scikit-learn library to build a dictionary.  
+First, separate words from the text, and after querying the part of speech of the word, restore the word to a simple form.  
+Next, after filter stop words, calculate the flat rate of each word, and record the high-frequency words into the dictionary to facilitate subsequent calculations. 
+ 
 
+### Data Modeling  
+In this project, 3 supervised learning models are applied: Naive Bayes, SVM, and Logistic Regression.
+Also, in Naive Bayes model, it considers both unigrams and bigrams at the same time. 
+
+### Data Training & Testing  
+Randomly obtain 80% of the training data and 20% of the test data from the JSON file where the data is stored.  
+The system trains and predicts the data every day to observe the correlation between the amount of data and the accuracy of the prediction.  
+
+### Evaluation
+Through the 7-day experiment, about 1300 articles can be obtained, and the distribution of 6 categories can be seen from the plot below.   
+According to the results, the SVM model performs best when the amount of data is small, and its accuracy is 0.60.   
+Followed by logistic regression, whcih is 0.55, and finally is Naive Bayes, which is 0.53.   
+It can be found from the confusion matrix that among the six categories, sports articles have the highest recognizability, and its accuracy is as high as 96.6%.  
+Followed by business and entertainment news, their discrimination is as high as 68.6% and 62.7%.   
+The remaining three categories are due to insufficient data, it is difficult to distinguish the content of the article leading to a decrease in overall accuracy.
+
+  
 
 ### Built With
 
@@ -79,7 +103,6 @@ It loads daily news articles and then stores them in a JSON file in order to do 
 * [scikit-learn](https://scikit-learn.org/stable/#)
 * [matplotlib](https://matplotlib.org/)
 * [nltk](https://www.nltk.org/)
-* [keras](https://keras.io/)
 
 
 
@@ -106,14 +129,20 @@ Download code and repalce the api_key to your own.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use the plot to check result.  
+Use the plots to check result.  
+### Data 
+Articles: {'science': 61, 'general': 226, 'health': 133, 'business': 294, 'entertainment': 270, 'sports': 341}
+![DataAccumulation][product-screenshot0]  
+![Data][product-screenshot1]  
+ 
+### Accuracy
+- Naive Bayes: 0.539156
+- SVM: 0.608433
+- Logistic Regression: 0.551204  
+![SupervisedLearning][product-screenshot2]  
+
 ### confused matrix 
-![NaiveBayes][product-screenshot] 
-### accuracy
-- Naive Bayes: 0.55
-- CNN: 0.33
-- RNN: 0.28
-- LSTM: 0.31 
+![NaiveBayes][product-screenshot3]  
 
 or copy an article content and apply it on the model to make predition.
 
@@ -155,4 +184,7 @@ email: angelxd84130@gmail.com
 [license-url]: https://github.com/angelxd84130/NewsClassification/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/yu-chieh-wang/
-[product-screenshot]: NaiveBayes.png
+[product-screenshot0]: DataAccumulation.png
+[product-screenshot1]: PieChart.png
+[product-screenshot2]: SupervisedLearning.png
+[product-screenshot3]: NaiveBayes.png
